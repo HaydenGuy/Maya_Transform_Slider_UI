@@ -31,10 +31,10 @@
       <property name="horizontalSpacing">
        <number>15</number>
       </property>
-      <item row="9" column="0">
-       <widget class="QLabel" name="lb_visibility">
+      <item row="7" column="0">
+       <widget class="QLabel" name="lb_scaleY">
         <property name="text">
-         <string>Visibility:</string>
+         <string>Scale Y:</string>
         </property>
        </widget>
       </item>
@@ -57,19 +57,30 @@
         </property>
        </widget>
       </item>
-      <item row="7" column="2">
-       <widget class="QSlider" name="slider_scaleY">
-        <property name="minimumSize">
-         <size>
-          <width>313</width>
-          <height>0</height>
-         </size>
+      <item row="2" column="0">
+       <widget class="QLabel" name="lb_translateZ">
+        <property name="text">
+         <string>Translate Z:</string>
         </property>
-        <property name="minimum">
-         <number>0</number>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="lb_scaleZ">
+        <property name="text">
+         <string>Scale Z:</string>
         </property>
+       </widget>
+      </item>
+      <item row="9" column="2">
+       <widget class="QSlider" name="slider_visibility">
         <property name="maximum">
-         <number>100</number>
+         <number>1</number>
+        </property>
+        <property name="pageStep">
+         <number>1</number>
+        </property>
+        <property name="value">
+         <number>1</number>
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -91,6 +102,28 @@
          <number>100</number>
         </property>
         <property name="sliderPosition">
+         <number>0</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QSlider" name="slider_translateZ">
+        <property name="minimumSize">
+         <size>
+          <width>313</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="minimum">
+         <number>-100</number>
+        </property>
+        <property name="maximum">
+         <number>100</number>
+        </property>
+        <property name="value">
          <number>0</number>
         </property>
         <property name="orientation">
@@ -120,10 +153,45 @@
         </property>
        </widget>
       </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="lb_rotateY">
+      <item row="3" column="0">
+       <widget class="QLabel" name="lb_rotateX">
         <property name="text">
-         <string>Rotate Y:</string>
+         <string>Rotate X:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QSlider" name="slider_rotateX">
+        <property name="minimumSize">
+         <size>
+          <width>313</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="minimum">
+         <number>-360</number>
+        </property>
+        <property name="maximum">
+         <number>360</number>
+        </property>
+        <property name="value">
+         <number>0</number>
+        </property>
+        <property name="sliderPosition">
+         <number>0</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="le_translateX">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>0</height>
+         </size>
         </property>
        </widget>
       </item>
@@ -134,8 +202,8 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="2">
-       <widget class="QSlider" name="slider_translateZ">
+      <item row="7" column="2">
+       <widget class="QSlider" name="slider_scaleY">
         <property name="minimumSize">
          <size>
           <width>313</width>
@@ -143,12 +211,34 @@
          </size>
         </property>
         <property name="minimum">
-         <number>-100</number>
+         <number>0</number>
         </property>
         <property name="maximum">
          <number>100</number>
         </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2">
+       <widget class="QSlider" name="slider_rotateZ">
+        <property name="minimumSize">
+         <size>
+          <width>313</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="minimum">
+         <number>-360</number>
+        </property>
+        <property name="maximum">
+         <number>360</number>
+        </property>
         <property name="value">
+         <number>0</number>
+        </property>
+        <property name="sliderPosition">
          <number>0</number>
         </property>
         <property name="orientation">
@@ -181,35 +271,10 @@
         </property>
        </widget>
       </item>
-      <item row="5" column="2">
-       <widget class="QSlider" name="slider_rotateZ">
-        <property name="minimumSize">
-         <size>
-          <width>313</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="minimum">
-         <number>-360</number>
-        </property>
-        <property name="maximum">
-         <number>360</number>
-        </property>
-        <property name="value">
-         <number>0</number>
-        </property>
-        <property name="sliderPosition">
-         <number>0</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="lb_scaleX">
+      <item row="4" column="0">
+       <widget class="QLabel" name="lb_rotateY">
         <property name="text">
-         <string>Scale X:</string>
+         <string>Rotate Y:</string>
         </property>
        </widget>
       </item>
@@ -220,33 +285,10 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="lb_rotateX">
+      <item row="9" column="0">
+       <widget class="QLabel" name="lb_visibility">
         <property name="text">
-         <string>Rotate X:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="2">
-       <widget class="QSlider" name="slider_visibility">
-        <property name="maximum">
-         <number>1</number>
-        </property>
-        <property name="pageStep">
-         <number>1</number>
-        </property>
-        <property name="value">
-         <number>1</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0">
-       <widget class="QLabel" name="lb_scaleY">
-        <property name="text">
-         <string>Scale Y:</string>
+         <string>Visibility:</string>
         </property>
        </widget>
       </item>
@@ -254,20 +296,6 @@
        <widget class="QLabel" name="lb_rotateZ">
         <property name="text">
          <string>Rotate Z:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="0">
-       <widget class="QLabel" name="lb_scaleZ">
-        <property name="text">
-         <string>Scale Z:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="lb_translateZ">
-        <property name="text">
-         <string>Translate Z:</string>
         </property>
        </widget>
       </item>
@@ -290,131 +318,100 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="2">
-       <widget class="QSlider" name="slider_rotateX">
-        <property name="minimumSize">
-         <size>
-          <width>313</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="minimum">
-         <number>-360</number>
-        </property>
-        <property name="maximum">
-         <number>360</number>
-        </property>
-        <property name="value">
-         <number>0</number>
-        </property>
-        <property name="sliderPosition">
-         <number>0</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLabel" name="value_translateX">
-        <property name="frameShape">
-         <enum>QFrame::NoFrame</enum>
-        </property>
+      <item row="6" column="0">
+       <widget class="QLabel" name="lb_scaleX">
         <property name="text">
-         <string>100</string>
+         <string>Scale X:</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLabel" name="value_translateY">
-        <property name="frameShape">
-         <enum>QFrame::NoFrame</enum>
-        </property>
-        <property name="text">
-         <string>100</string>
+       <widget class="QLineEdit" name="le_translateY">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>0</height>
+         </size>
         </property>
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QLabel" name="value_translateZ">
-        <property name="frameShape">
-         <enum>QFrame::NoFrame</enum>
-        </property>
-        <property name="text">
-         <string>100</string>
+       <widget class="QLineEdit" name="le_translateZ">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>0</height>
+         </size>
         </property>
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QLabel" name="value_rotateX">
-        <property name="frameShape">
-         <enum>QFrame::NoFrame</enum>
-        </property>
-        <property name="text">
-         <string>100</string>
+       <widget class="QLineEdit" name="le_rotateX">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>0</height>
+         </size>
         </property>
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QLabel" name="value_rotateY">
-        <property name="frameShape">
-         <enum>QFrame::NoFrame</enum>
-        </property>
-        <property name="text">
-         <string>100</string>
+       <widget class="QLineEdit" name="le_rotateY">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>0</height>
+         </size>
         </property>
        </widget>
       </item>
       <item row="5" column="1">
-       <widget class="QLabel" name="value_rotateZ">
-        <property name="frameShape">
-         <enum>QFrame::NoFrame</enum>
-        </property>
-        <property name="text">
-         <string>100</string>
+       <widget class="QLineEdit" name="le_rotateZ">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>0</height>
+         </size>
         </property>
        </widget>
       </item>
       <item row="6" column="1">
-       <widget class="QLabel" name="value_scaleX">
-        <property name="frameShape">
-         <enum>QFrame::NoFrame</enum>
-        </property>
-        <property name="text">
-         <string>100</string>
+       <widget class="QLineEdit" name="le_scaleX">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>0</height>
+         </size>
         </property>
        </widget>
       </item>
       <item row="7" column="1">
-       <widget class="QLabel" name="value_scaleY">
-        <property name="frameShape">
-         <enum>QFrame::NoFrame</enum>
-        </property>
-        <property name="text">
-         <string>100</string>
+       <widget class="QLineEdit" name="le_scaleY">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>0</height>
+         </size>
         </property>
        </widget>
       </item>
       <item row="8" column="1">
-       <widget class="QLabel" name="value_scaleZ">
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::NoFrame</enum>
-        </property>
-        <property name="text">
-         <string>100</string>
+       <widget class="QLineEdit" name="le_scaleZ">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>0</height>
+         </size>
         </property>
        </widget>
       </item>
       <item row="9" column="1">
-       <widget class="QLabel" name="value_visibility">
-        <property name="frameShape">
-         <enum>QFrame::NoFrame</enum>
-        </property>
-        <property name="text">
-         <string>100</string>
+       <widget class="QLineEdit" name="le_visibility">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>0</height>
+         </size>
         </property>
        </widget>
       </item>

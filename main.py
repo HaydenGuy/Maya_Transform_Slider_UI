@@ -1,10 +1,12 @@
 import sys
 import maya.cmds as cmds
+import maya.OpenMaya as om
 
 sys.path.append(
     '/mnt/32346261-2a77-4ea4-ad97-df46c23e0f72/Maya_Scripts/Transform_Sliders')
 
 from PySide2.QtWidgets import QMainWindow, QApplication
+from PySide2.QtGui  import QDoubleValidator
 from UI.Ui_transform_sliders import Ui_transform_sliders
 
 class TransformSliders(QMainWindow, Ui_transform_sliders):
@@ -20,19 +22,30 @@ class TransformSliders(QMainWindow, Ui_transform_sliders):
             e=['SelectionChanged', self.selection_changed])
 
         # Connection the sliders values changing to the transform update
-        self.slider_translateX.valueChanged.connect(self.transform_update)
-        self.slider_translateY.valueChanged.connect(self.transform_update)
-        self.slider_translateZ.valueChanged.connect(self.transform_update)
-        self.slider_rotateX.valueChanged.connect(self.transform_update)
-        self.slider_rotateY.valueChanged.connect(self.transform_update)
-        self.slider_rotateZ.valueChanged.connect(self.transform_update)
-        self.slider_scaleX.valueChanged.connect(self.transform_update)
-        self.slider_scaleY.valueChanged.connect(self.transform_update)
-        self.slider_scaleZ.valueChanged.connect(self.transform_update)
-        self.slider_visibility.valueChanged.connect(self.transform_update)
+        self.slider_translateX.valueChanged.connect(self.slider_update)
+        self.slider_translateY.valueChanged.connect(self.slider_update)
+        self.slider_translateZ.valueChanged.connect(self.slider_update)
+        self.slider_rotateX.valueChanged.connect(self.slider_update)
+        self.slider_rotateY.valueChanged.connect(self.slider_update)
+        self.slider_rotateZ.valueChanged.connect(self.slider_update)
+        self.slider_scaleX.valueChanged.connect(self.slider_update)
+        self.slider_scaleY.valueChanged.connect(self.slider_update)
+        self.slider_scaleZ.valueChanged.connect(self.slider_update)
+        self.slider_visibility.valueChanged.connect(self.slider_update)
+
+        self.le_translateX.textChanged.connect(self.text_update)
+        self.le_translateY.textChanged.connect(self.text_update)
+        self.le_translateZ.textChanged.connect(self.text_update)
+        self.le_rotateX.textChanged.connect(self.text_update)
+        self.le_rotateY.textChanged.connect(self.text_update)
+        self.le_rotateZ.textChanged.connect(self.text_update)
+        self.le_scaleX.textChanged.connect(self.text_update)
+        self.le_scaleY.textChanged.connect(self.text_update)
+        self.le_scaleZ.textChanged.connect(self.text_update)
+        self.le_visibility.textChanged.connect(self.text_update)
 
     # Gets the selected object and assigns a transform based on the slider value of the selected slider
-    def transform_update(self, value):
+    def slider_update(self, value):
         selected_object = cmds.ls(selection=True, type="transform")
         slider_name = self.sender().objectName()
         slider_transform = slider_name[7:]
@@ -42,7 +55,21 @@ class TransformSliders(QMainWindow, Ui_transform_sliders):
 
         self.value_update()
 
-    # Updates the slider values based on the current value of the slider
+    # Gets the selected object and assigns a transform based on the line edit input value
+    def text_update(self, value):
+        selected_object = cmds.ls(selection=True, type="transform")
+        line_edit_name = self.sender().objectName()
+        line_edit_transform = line_edit_name[3:]
+        
+        # If the user inputs anything except an integer an error is raised
+        try:
+            for obj in selected_object:
+                cmds.setAttr(obj + f".{line_edit_transform}", int(value))
+                self.value_update()
+        except ValueError:
+            om.MGlobal.displayError("Enter an integer value")
+
+    # Updates the slider and text values based on the current values
     def value_update(self):
         selected_object = cmds.ls(selection=True, type="transform")
         object = selected_object[0]
@@ -58,16 +85,16 @@ class TransformSliders(QMainWindow, Ui_transform_sliders):
         scaleZ = cmds.getAttr(object + ".scaleZ")
         visibility = cmds.getAttr(object + ".visibility")
 
-        self.value_translateX.setText(f"{int(translateX)}")
-        self.value_translateY.setText(f"{int(translateY)}")
-        self.value_translateZ.setText(f"{int(translateZ)}")
-        self.value_rotateX.setText(f"{int(rotateX)}")
-        self.value_rotateY.setText(f"{int(rotateY)}")
-        self.value_rotateZ.setText(f"{int(rotateZ)}")
-        self.value_scaleX.setText(f"{int(scaleX)}")
-        self.value_scaleY.setText(f"{int(scaleY)}")
-        self.value_scaleZ.setText(f"{int(scaleZ)}")
-        self.value_visibility.setText(f"{int(visibility)}")
+        self.le_translateX.setText(f"{int(translateX)}")
+        self.le_translateY.setText(f"{int(translateY)}")
+        self.le_translateZ.setText(f"{int(translateZ)}")
+        self.le_rotateX.setText(f"{int(rotateX)}")
+        self.le_rotateY.setText(f"{int(rotateY)}")
+        self.le_rotateZ.setText(f"{int(rotateZ)}")
+        self.le_scaleX.setText(f"{int(scaleX)}")
+        self.le_scaleY.setText(f"{int(scaleY)}")
+        self.le_scaleZ.setText(f"{int(scaleZ)}")
+        self.le_visibility.setText(f"{int(visibility)}")
 
         self.slider_translateX.setValue(int(translateX))
         self.slider_translateY.setValue(int(translateY))
@@ -93,5 +120,4 @@ if __name__ == '__main__':
 
     # Create an instance of the main window
     window = TransformSliders()
-    # Show the main window
     window.show()

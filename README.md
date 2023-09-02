@@ -3,6 +3,5 @@ A UI that gives slider controls for the transformation attributes in Maya. Works
 <br><br>
 
 
-
-https://github.com/HaydenGuy/Maya_Transform_Slider_UI/assets/89313425/8ad33c46-2751-465b-93de-b573753ca225
+https://github.com/HaydenGuy/Maya_Transform_Slider_UI/assets/89313425/e0aff01b-d85e-460d-a234-5aabe2e39ef0
 

@@ -2,17 +2,16 @@ import sys
 import maya.cmds as cmds
 import maya.OpenMaya as om
 
-sys.path.append(
-    '/mnt/32346261-2a77-4ea4-ad97-df46c23e0f72/Maya_Scripts/Transform_Sliders')
+from PySide6.QtWidgets import QMainWindow, QApplication
 
-from PySide2.QtWidgets import QMainWindow, QApplication
-from PySide2.QtGui  import QDoubleValidator
-from UI.Ui_transform_sliders import Ui_transform_sliders
+import Maya_Transform_Slider_UI.UI.ui as ui
 
-class TransformSliders(QMainWindow, Ui_transform_sliders):
+class TransformSliders(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setupUi(self)
+
+        self.ui = ui.Ui_transform_sliders()
+        self.ui.setupUi(self)
 
         # Initialises the slider values based on the selected object
         self.value_update()
@@ -22,27 +21,27 @@ class TransformSliders(QMainWindow, Ui_transform_sliders):
             e=['SelectionChanged', self.selection_changed])
 
         # Connection the sliders values changing to the transform update
-        self.slider_translateX.valueChanged.connect(self.slider_update)
-        self.slider_translateY.valueChanged.connect(self.slider_update)
-        self.slider_translateZ.valueChanged.connect(self.slider_update)
-        self.slider_rotateX.valueChanged.connect(self.slider_update)
-        self.slider_rotateY.valueChanged.connect(self.slider_update)
-        self.slider_rotateZ.valueChanged.connect(self.slider_update)
-        self.slider_scaleX.valueChanged.connect(self.slider_update)
-        self.slider_scaleY.valueChanged.connect(self.slider_update)
-        self.slider_scaleZ.valueChanged.connect(self.slider_update)
-        self.slider_visibility.valueChanged.connect(self.slider_update)
+        self.ui.slider_translateX.valueChanged.connect(self.slider_update)
+        self.ui.slider_translateY.valueChanged.connect(self.slider_update)
+        self.ui.slider_translateZ.valueChanged.connect(self.slider_update)
+        self.ui.slider_rotateX.valueChanged.connect(self.slider_update)
+        self.ui.slider_rotateY.valueChanged.connect(self.slider_update)
+        self.ui.slider_rotateZ.valueChanged.connect(self.slider_update)
+        self.ui.slider_scaleX.valueChanged.connect(self.slider_update)
+        self.ui.slider_scaleY.valueChanged.connect(self.slider_update)
+        self.ui.slider_scaleZ.valueChanged.connect(self.slider_update)
+        self.ui.slider_visibility.valueChanged.connect(self.slider_update)
 
-        self.le_translateX.textChanged.connect(self.text_update)
-        self.le_translateY.textChanged.connect(self.text_update)
-        self.le_translateZ.textChanged.connect(self.text_update)
-        self.le_rotateX.textChanged.connect(self.text_update)
-        self.le_rotateY.textChanged.connect(self.text_update)
-        self.le_rotateZ.textChanged.connect(self.text_update)
-        self.le_scaleX.textChanged.connect(self.text_update)
-        self.le_scaleY.textChanged.connect(self.text_update)
-        self.le_scaleZ.textChanged.connect(self.text_update)
-        self.le_visibility.textChanged.connect(self.text_update)
+        self.ui.le_translateX.textChanged.connect(self.text_update)
+        self.ui.le_translateY.textChanged.connect(self.text_update)
+        self.ui.le_translateZ.textChanged.connect(self.text_update)
+        self.ui.le_rotateX.textChanged.connect(self.text_update)
+        self.ui.le_rotateY.textChanged.connect(self.text_update)
+        self.ui.le_rotateZ.textChanged.connect(self.text_update)
+        self.ui.le_scaleX.textChanged.connect(self.text_update)
+        self.ui.le_scaleY.textChanged.connect(self.text_update)
+        self.ui.le_scaleZ.textChanged.connect(self.text_update)
+        self.ui.le_visibility.textChanged.connect(self.text_update)
 
     # Gets the selected object and assigns a transform based on the slider value of the selected slider
     def slider_update(self, value):
@@ -85,27 +84,27 @@ class TransformSliders(QMainWindow, Ui_transform_sliders):
         scaleZ = cmds.getAttr(object + ".scaleZ")
         visibility = cmds.getAttr(object + ".visibility")
 
-        self.le_translateX.setText(f"{int(translateX)}")
-        self.le_translateY.setText(f"{int(translateY)}")
-        self.le_translateZ.setText(f"{int(translateZ)}")
-        self.le_rotateX.setText(f"{int(rotateX)}")
-        self.le_rotateY.setText(f"{int(rotateY)}")
-        self.le_rotateZ.setText(f"{int(rotateZ)}")
-        self.le_scaleX.setText(f"{int(scaleX)}")
-        self.le_scaleY.setText(f"{int(scaleY)}")
-        self.le_scaleZ.setText(f"{int(scaleZ)}")
-        self.le_visibility.setText(f"{int(visibility)}")
+        self.ui.le_translateX.setText(f"{int(translateX)}")
+        self.ui.le_translateY.setText(f"{int(translateY)}")
+        self.ui.le_translateZ.setText(f"{int(translateZ)}")
+        self.ui.le_rotateX.setText(f"{int(rotateX)}")
+        self.ui.le_rotateY.setText(f"{int(rotateY)}")
+        self.ui.le_rotateZ.setText(f"{int(rotateZ)}")
+        self.ui.le_scaleX.setText(f"{int(scaleX)}")
+        self.ui.le_scaleY.setText(f"{int(scaleY)}")
+        self.ui.le_scaleZ.setText(f"{int(scaleZ)}")
+        self.ui.le_visibility.setText(f"{int(visibility)}")
 
-        self.slider_translateX.setValue(int(translateX))
-        self.slider_translateY.setValue(int(translateY))
-        self.slider_translateZ.setValue(int(translateZ))
-        self.slider_rotateX.setValue(int(rotateX))
-        self.slider_rotateY.setValue(int(rotateY))
-        self.slider_rotateZ.setValue(int(rotateZ))
-        self.slider_scaleX.setValue(int(scaleX))
-        self.slider_scaleY.setValue(int(scaleY))
-        self.slider_scaleZ.setValue(int(scaleZ))
-        self.slider_visibility.setValue(visibility)
+        self.ui.slider_translateX.setValue(int(translateX))
+        self.ui.slider_translateY.setValue(int(translateY))
+        self.ui.slider_translateZ.setValue(int(translateZ))
+        self.ui.slider_rotateX.setValue(int(rotateX))
+        self.ui.slider_rotateY.setValue(int(rotateY))
+        self.ui.slider_rotateZ.setValue(int(rotateZ))
+        self.ui.slider_scaleX.setValue(int(scaleX))
+        self.ui.slider_scaleY.setValue(int(scaleY))
+        self.ui.slider_scaleZ.setValue(int(scaleZ))
+        self.ui.slider_visibility.setValue(visibility)
 
     # If the selection changes the slider numbers are updated
     def selection_changed(self):
